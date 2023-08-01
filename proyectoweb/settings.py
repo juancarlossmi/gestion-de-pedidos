@@ -37,7 +37,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 # DEBUG = True
 
 # Variable de entorno render que pone en true el desarrolo y en false si no estamos en desarrollo
-DEBUG = 'RENDER' not in os.environ
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
