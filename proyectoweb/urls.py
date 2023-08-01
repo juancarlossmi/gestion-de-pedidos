@@ -16,6 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+# para poder utiliar los urls de la carpeta media se imporate el archivo "settings.py"
+from django.conf import settings
+# para poder utilizar los archivos static utilizamos la siguiente importacion
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -28,3 +32,6 @@ urlpatterns = [
     path("autenticacion/", include('autenticacion.urls')),
     path("pedidos/", include('pedidos.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
