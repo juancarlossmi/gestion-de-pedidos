@@ -105,7 +105,8 @@ WSGI_APPLICATION = "proyectoweb.wsgi.application"
 
 DATABASES = {
     'default':dj_database_url.config(
-        default = 'postgresql://postgres:postgres@localhost/postgres',
+        default = 'postgres://djangocrud_vzjz_user:BJxBaZLsQ1RUt8Hb0i9V42FuMNbHmnBm@dpg-civja0h5rnuqald0efh0-a.oregon-postgres.render.com/djangocrud_vzjz',
+        
         conn_max_age = 600
     )
 }
