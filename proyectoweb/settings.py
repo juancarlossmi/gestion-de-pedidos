@@ -103,12 +103,18 @@ WSGI_APPLICATION = "proyectoweb.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default':dj_database_url.config(
+#         default = 'postgresql://postgres:postgres@localhost/postgres',
+#         conn_max_age = 600
+#     )
+# }
+
 DATABASES = {
-    'default':dj_database_url.config(
-        default = 'postgres://djangocrud_vzjz_user:BJxBaZLsQ1RUt8Hb0i9V42FuMNbHmnBm@dpg-civja0h5rnuqald0efh0-a.oregon-postgres.render.com/djangocrud_vzjz',
-        
-        conn_max_age = 600
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
 
 
@@ -147,7 +153,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # Following settings only make sense on production and may break development environments.
 if not DEBUG:    # Tell Django to copy statics to the `staticfiles` directory
     # in your application directory on Render.
@@ -183,5 +188,3 @@ MESSAGE_TAGS={
     mensajes_de_error.WARNING: 'warning',
     mensajes_de_error.ERROR: 'error',
 }
-
-SERVER_BASE_URL = "http://127.0.0.1:8000"
