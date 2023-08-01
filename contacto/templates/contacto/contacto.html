@@ -1,0 +1,22 @@
+{% extends "proyectowebapp/base.html" %}
+{% load static %}
+{% block content %}
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+    {% if "valido" in request.GET %}
+        <p style="color: snow;">
+            informacion enviada correctamente
+        </p>
+    {% endif %}
+    <form method="post" class="card card-body mt-5" style="color: white; background-color:  rgba(24, 64, 8, 0.8); text-align: center;">
+        {% csrf_token %}
+        <table style="color: white; margin: 20px auto;">
+            {{mi_formulario.as_table}}
+        </table>
+        <input type="submit" value="enviar" style="width: 150px; margin: 0px auto;">
+    </form>
+        </div>
+    </div>
+</main>
+{% endblock %}

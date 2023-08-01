@@ -1,0 +1,29 @@
+{% extends "proyectowebapp/base.html" %}
+{% load static %}
+{% block content %}
+<!-- Message -->
+<section class="page-section cta">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-9 mx-auto">
+        <div class="cta-inner text-center rounded">
+          <h2 class="section-heading mb-4">
+            <span class="section-heading-upper">Fecha de ultima actualizacion: 31/07/2023</span>
+            <span class="section-heading-lower">Politica de privacidad</span>
+          </h2>
+          <p class="mb-0">
+            Esta pagina web fue desarrollada con Python y el framework Django, utilizamos PostgreSQL para
+            almacenar la informacion de los usuarios y la pagina web fue desplegada en render.com,
+            esta pagina fue personalizada con Bootstrap, espera nuevas actualizaciones. <br />
+            Cuando los usuarios se registran en nuestro sitio web, recopilamos información personal como
+            nombres, direcciones de correo electrónico y contraseñas para crear y administrar sus cuentas.
+            Nos comprometemos a mantener la seguridad de la información personal de los usuarios. Hemos
+            implementado medidas técnicas y organizativas para proteger la información contra acceso no
+            autorizado, pérdida o alteración.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

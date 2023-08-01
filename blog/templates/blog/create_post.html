@@ -1,0 +1,25 @@
+{% extends "proyectowebapp/base.html" %}
+{% load static %}
+{% block content %}
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form method="post" class="card card-body mt-5" enctype="multipart/form-data"
+                style="color: white; background-color:  rgba(24, 64, 8, 0.8);">
+                {% csrf_token %}
+                <h1>Crear publicación</h1>
+                <div class="text-danger">
+                    {{ error }}
+                </div>
+                <!-- mostramos el formulario personalizado -->
+                {{form.as_p}}
+
+                <button class="btn btn-primary">
+                    Guardar
+                </button>
+                <a href="javascript:history.back()" class="btn btn-danger" style="margin-top: 13px;">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}

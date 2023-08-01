@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Pedido</title>
+</head>
+
+<body>
+    <p>Hola {{nombre_usuario}},</p>
+    <p>A continuación se detalla la información de tu pedido:</p>
+    <p>N° de pedido: {{pedido.id}}</p>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for linea_pedido in lineas_pedido %}
+            <tr>
+                <td>{{ linea_pedido.producto.nombre }}</td>
+                <td style="text-align: center;">{{linea_pedido.cantidad}}</td>
+                <td>${{ linea_pedido.producto.precio }}</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">Total a pagar:</td>
+                <td>${{ total_a_pagar }}</td>
+            </tr>
+        </tfoot>
+    </table>
+
+</body>
+
+</html>

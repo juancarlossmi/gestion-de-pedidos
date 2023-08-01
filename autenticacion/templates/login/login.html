@@ -1,0 +1,40 @@
+{% extends "proyectowebapp/base.html" %}
+{% load static %}
+<!-- 
+    Esta etiqueta carga las etiquetas del paquete "crispy_forms"
+ -->
+{% load crispy_forms_tags %}
+{% block content %}
+<!-- 
+    Crear formulario utilizando la funcion "get" del archivo "views.py"
+ -->
+
+<form method="post" action="" style="color:white;">
+    {% csrf_token %}
+    <!-- 
+        con la variable form del archivo "autenticacion/views.py"
+     -->
+    <div style="width: 50%; margin: auto;">
+
+        <!-- 
+        con esta linea importamos un "mensaje_de_error"
+        si hay algun tipo de mensaje al recorrer el formulario entonces 
+    -->
+        {% if messages %}
+        <!-- 
+            por cada mensaje de error que haya en el formulario eentonces muestrame los mensajes
+         -->
+        {% for mensaje in messages %}
+        {{mensaje}}
+        {% endfor %}
+        {% endif %}
+        <!-- 
+        aqui termina el codigo que muestra los mensajes de error si queremos agregar otro mensaje de error
+        tenemos que ir a la zona del codigo que nos interesa mostrar el mensaje y agregar el codigo anterior
+     -->
+
+        {{form|crispy}}
+        <button type="submit" class="btn btn-success">Login </button>
+    </div>
+</form>
+{% endblock %}

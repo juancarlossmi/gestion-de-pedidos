@@ -1,0 +1,42 @@
+{% extends "proyectowebapp/base.html" %}
+{% load static %}
+{% block content %}
+{% for post in posts %}
+<section class="page-section clearfix">
+  <div class="container">
+    <div class="intro">
+      <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{post.imagen.url}}" alt="" style="width: 50%;">
+      {% if post.autor == request.user %}
+      <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+        <h2 class="section-heading mb-4">
+          <span class="section-heading-lower">{{post.titulo}}</span>
+          <span class="section-heading-upper">{{post.contenido}}</span>
+        </h2>
+        <div style="text-align: left; font-size: 0.8em;">
+          autor: {{post.autor}}
+        </div>
+        <a style="margin: 10px;" href="" class="btn btn-success">Editar</a>
+        <a href="" class="btn btn-danger">Borrar</a>
+      </div>
+      {% else %}
+      <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+        <h2 class="section-heading mb-4">
+          <span class="section-heading-lower">{{post.titulo}}</span>
+          <span class="section-heading-upper">{{post.contenido}}</span>
+        </h2>
+        <div style="text-align: left; font-size: 0.8em;">
+          autor: {{post.autor}}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endfor %}
+<section>
+  <div style="width: 75%; margin: auto; text-align: center; color: white; font-size: 20px;">
+    Categoria: {{categoria.nombre}}<br />
+    <a href="javascript:history.back()" class="linkscategorias" style="margin: 20px;">Regresar</a>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "proyectowebapp/base.html" %}
+{% load static %}
+<!-- 
+    Esta etiqueta carga las etiquetas del paquete "crispy_forms"
+ -->
+{% load crispy_forms_tags %}
+{% block content %}
+<!-- 
+    Crear formulario utilizando la funcion "get" del archivo "views.py"
+ -->
+<form method="post" action="" style="color:white;">
+    {% csrf_token %}
+    <!-- 
+        con la variable form del archivo "autenticacion/views.py"
+     -->
+    <div style="width: 50%; margin: auto;">
+        {{form|crispy}}
+        <button type="submit" class="btn btn-success">Registrate </button>
+    </div>
+</form>
+{% endblock %}
