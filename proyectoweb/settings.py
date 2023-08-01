@@ -110,12 +110,35 @@ WSGI_APPLICATION = "proyectoweb.wsgi.application"
 #     )
 # }
 
+
+
+# DATABASES = {
+#     'default':dj_database_url.config(
+#         default = 'sqlite:///db.sqlite3',
+#         conn_max_age = 600
+#     )
+# }
+
+
+
+import os
+import dj_database_url
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': dj_database_url.config(
+        default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3'),
+        conn_max_age=600
+    )
 }
+
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 
 # Password validation
@@ -154,7 +177,6 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 # Following settings only make sense on production and may break development environments.
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 if not DEBUG:    # Tell Django to copy statics to the `staticfiles` directory
     # in your application directory on Render.
     STATIC_ROOT = BASE_DIR / 'staticfiles'
@@ -162,14 +184,15 @@ if not DEBUG:    # Tell Django to copy statics to the `staticfiles` directory
     # and creating unique names for each version so they can safely be cached forever.
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 MEDIA_URL= '/media/'
-MEDIA_ROOT= 'https://gestion-de-pedidos.onrender.com' / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+if not os.path.exists(MEDIA_ROOT):
+    os.makedirs(MEDIA_ROOT)
 
 EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST="smtp.gmail.com"

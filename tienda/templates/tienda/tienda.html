@@ -30,7 +30,7 @@
           {% if request.user.is_authenticated %}
           <a href="{% url 'carro:agregar' producto.id %}" class="btn btn-success">Agregar</a>
           {% else %}
-          <a href="" class="btn btn-success">Agregar</a>
+          <a href="{% url 'logear' %}" class="btn btn-success">Agregar</a>
           {% endif %}
         </div>
       </div>
